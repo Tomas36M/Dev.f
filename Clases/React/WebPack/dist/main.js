@@ -1,0 +1,1 @@
+(()=>{"use strict";console.log(`Hola ${"El pollo"}, saludos desde java Script`)})();

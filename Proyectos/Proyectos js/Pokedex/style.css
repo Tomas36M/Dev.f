@@ -1,0 +1,140 @@
+body {
+    /*background-image: url(https://wallpaperaccess.com/full/24936.jpg);*/
+    background: linear-gradient(to top, #6190e8, #a7bfe8);
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    font-family: 'Libre Baskerville', serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+header {
+    background: #a7bfe8;
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    position: sticky;
+    top:0;
+    z-index: 1;
+    width: 100%;
+}
+
+.search-box-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    margin-top: 5px;
+}
+
+.pokemon-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 30px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    margin-top: 20px;
+    opacity: 0.9;
+}
+
+.pokemon-block, .pokemon-block-back {
+    display: flex;
+    flex-flow: column;
+    border: #5f6c73 2px solid;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);    
+}
+
+.img-container {
+    background-image: url(https://www.dekazeta.net/foro/uploads/monthly_2020_02/839343792_pikachupokeballpokemonicon-1320184857556086253.thumb.png.25416d85e977125952b78c3384d23bf5.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 100%;
+}
+
+.img-container img {
+    width: 100%;
+    height: 150px;
+}
+
+
+.num-pokemon {
+	border-radius: 10px;
+	font-size: 0.8em;
+	padding: 5px 10px;
+    text-align: end;
+}
+
+.pokemon-block p {
+    margin: 5px;
+}
+
+.name {
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.card-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .card-container {
+    transform: rotateY(180deg);
+}
+
+.pokemon-block, .pokemon-block-back {
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.pokemon-block-back {
+    transform: rotateY(180deg);
+    position: absolute;
+    top: 0%;
+}
+
+
+.type-container {
+    padding: 5px;
+    border-radius: 10px;
+    border: solid 1px black;
+    margin: 5px 0 0 0px;
+}
+
+.type-containers {
+    display: inline;
+    padding: 5px;
+    border-radius: 10px;
+    border: solid 1px black;
+    margin: 5px 0 0 0px;
+}
+
+.type-container p {
+}
+
+.stat-container {
+    width: 100%;
+}
+
+.stat-name {
+    height: 10px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.stat-container {
+    font-size: 14px;
+    margin-bottom: 10px;
+}

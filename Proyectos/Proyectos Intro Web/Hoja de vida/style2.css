@@ -1,0 +1,72 @@
+
+
+body {
+    background: #2980b9; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2980b9, #6dd5fa, #ffffff); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2980b9, #6dd5fa, #ffffff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #323232;
+    text-rendering: optimizeLegibility;
+    font-size: 17px;
+}
+
+main {
+    width: 85%;
+    background: #ffffff;
+    margin: 0 auto;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.profile {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.profile .item-text {
+    margin-left: 50px;
+}
+
+.profile .avatar {
+        margin: 5px 40px 0 0;
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+}
+
+.container-contacto {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    margin: 30px 0 30px 0;
+}
+
+    .about-me {
+        display: flex;
+        flex-flow: column;
+        width: auto;
+        justify-content: left;
+        text-align: justify;
+    }
+
+    .about-me .item2 {
+        margin: 0px;
+        padding: 0 50px 0 50px;
+    }
+    
+
+.container-section {
+    display: flex;
+    width: auto;
+    flex-flow: column;
+}
+
+.container-section .item {
+    margin: 10px;
+    padding: 5px;
+    text-align: center;
+    border: gray 2px solid;
+}
+

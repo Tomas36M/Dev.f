@@ -1,0 +1,78 @@
+body {
+    margin: 130px;
+    padding: 130px;
+}
+
+.parent {
+    display: flex;
+    /*
+    flex-direction: ; + flex-wrap: ; = flex-flow: ;
+    */
+    flex-flow: row wrap;
+    justify-content: center; /* flex-start, center, flex-end */
+    align-items: center;
+    border-color: black;
+    border-style: double;
+    border-radius: 4%;
+    width: 550px;
+    height: 550px;
+}
+
+.child {
+    color: white;
+    background-color: blue;
+    border-color: blue;
+    border-style: groove;
+    width: 10%;
+    height: 35px;
+    font-size: 35px;
+    border-radius: 4px;
+}
+
+.child2{
+    order: 0;
+    color: white;
+    background-color: blue;
+    border-color: blue;
+    border-style: groove;
+    width: 10%;
+    height: 35px;
+    font-size: 35px;
+    border-radius: 4px;
+}
+
+.child3 {
+    order: 0;
+    color: white;
+    background-color: blue;
+    border-color: blue;
+    border-style: groove;
+    width: 10%;
+    height: 35px;
+    font-size: 35px;
+    border-radius: 4px; 
+}
+
+.child4 {
+    order: 0;
+    color: white;
+    background-color: blue;
+    border-color: blue;
+    border-style: groove;
+    width: 10%;
+    height: 35px;
+    font-size: 35px;
+    border-radius: 4px; 
+}
+
+.child5 {
+    order: 0;
+    color: white;
+    background-color: blue;
+    border-color: blue;
+    border-style: groove;
+    width: 10%;
+    height: 35px;
+    font-size: 35px;
+    border-radius: 4px;  
+}

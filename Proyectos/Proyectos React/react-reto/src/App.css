@@ -1,0 +1,22 @@
+.App{
+  
+}
+
+img{
+  height: 150px;
+  width: 150px;
+}
+
+.card-container{
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+
+.text-container{
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+
