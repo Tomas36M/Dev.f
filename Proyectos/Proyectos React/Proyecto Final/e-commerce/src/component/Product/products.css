@@ -1,0 +1,16 @@
+.products{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    padding: 50px;
+}
+
+.cards{
+    margin: 10px;
+}
+
+.text-content{
+    height: 80px;
+    max-height: 80px;
+    overflow:hidden;
+    text-overflow:Ellipsis;
+}

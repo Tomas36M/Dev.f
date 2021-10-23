@@ -28,9 +28,7 @@ const Home = () => {
 
     return (
         <div>
-            <h1>Products</h1>
             <div className='product-search'>
-                <h1 className='prouct-text'>Search a Product</h1>
                 <form>
                     <input
                         className='product-search-input'
@@ -46,8 +44,7 @@ const Home = () => {
                 </div>
             )}
 
-            {products && <div>
-                <h2>Productos</h2>
+            {products && <div className="products">
                 {console.log(filteredProducts)}
                 {filteredProducts.map(product => {
                     return (
