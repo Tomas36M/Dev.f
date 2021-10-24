@@ -1,16 +1,14 @@
 .products{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr ;
-    padding: 50px;
+    padding: 10px 30px 10px 30px;
 }
 
-.cards{
-    margin: 10px;
-}
-
-.text-content{
+/*.text-content{
     height: 80px;
     max-height: 80px;
     overflow:hidden;
     text-overflow:Ellipsis;
+}*/
+
+.price{
+    margin-left: 20px;
 }
