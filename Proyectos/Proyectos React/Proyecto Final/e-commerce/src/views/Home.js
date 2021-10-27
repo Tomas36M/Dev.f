@@ -46,9 +46,9 @@ const Home = () => {
             )}
 
             {products && <Grid className="products" container spacing={3}>
-                    {filteredProducts.map(product => {
-                        return (
-                            <Grid item xs={12} sm={6} md={4} lg={3}>
+                {filteredProducts.map(product => {
+                    return (
+                        <Grid item xs={12} sm={6} md={4} lg={3}>
                             <Products
                                 key={product.id}
                                 name={product.product_name}
@@ -58,9 +58,9 @@ const Home = () => {
                                 brand={product.brand}
                                 category={product.category}
                             />
-                            </Grid>
-                        )
-                    })}
+                        </Grid>
+                    )
+                })}
             </Grid>
             }
         </div>

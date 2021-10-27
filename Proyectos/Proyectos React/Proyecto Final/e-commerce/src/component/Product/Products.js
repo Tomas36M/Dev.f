@@ -10,6 +10,7 @@ import IconButton from '@mui/material/IconButton';
 // import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import InfoIcon from '@mui/icons-material/Info';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import accounting from 'accounting';
 import './products.css'
@@ -73,7 +74,7 @@ export default function Products({
             <CardActions disableSpacing>
                 <h3 className="price">{accounting.formatMoney(price)}</h3>
                 <ExpandMore>
-                    <FavoriteIcon />
+                    <InfoIcon />
                 </ExpandMore>
             </CardActions>
         </Card>
