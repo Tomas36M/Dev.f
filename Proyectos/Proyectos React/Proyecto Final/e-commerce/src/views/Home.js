@@ -2,8 +2,13 @@ import React, { useState, useEffect } from 'react'
 import UseAxios from '../hooks/UseAxios'
 import Products from '../component/Product/Products';
 import { Grid } from '@mui/material';
+import Payload from '../utils/payload';
+import CoolHeader from '../component/CoolHeader/CoolHeader';
 
 const Home = () => {
+
+    const user = Payload()
+
     const [products, setProducts] = useState([]);
     const [search, setSearch] = useState('');
 
@@ -29,40 +34,85 @@ const Home = () => {
 
     return (
         <div>
-            <div className='product-search'>
-                <form>
-                    <input
-                        className='product-search-input'
-                        type='text'
-                        onChange={handleChange}
-                        placeholder='Search'
-                    />
-                </form>
-            </div>
-            {error && (
-                <div>
-                    <p>{error.message}</p>
-                </div>
-            )}
+            {user ? (
+                (
+                    <div>
+                        <CoolHeader />
+                        <div className='product-search'>
+                            <form>
+                                <input
+                                    className='product-search-input'
+                                    type='text'
+                                    onChange={handleChange}
+                                    placeholder='Search'
+                                />
+                            </form>
+                        </div>
+                        {error && (
+                            <div>
+                                <p>{error.message}</p>
+                            </div>
+                        )}
 
-            {products && <Grid className="products" container spacing={3}>
-                {filteredProducts.map(product => {
-                    return (
-                        <Grid item xs={12} sm={6} md={4} lg={3}>
-                            <Products
-                                key={product.id}
-                                name={product.product_name}
-                                price={product.price}
-                                image={product.image}
-                                description={product.description}
-                                brand={product.brand}
-                                category={product.category}
-                            />
+                        {products && <Grid className="products" container spacing={3}>
+                            {filteredProducts.map(product => {
+                                return (
+                                    <Grid item xs={12} sm={6} md={4} lg={3}>
+                                        <Products
+                                            key={product.id}
+                                            name={product.product_name}
+                                            price={product.price}
+                                            image={product.image}
+                                            description={product.description}
+                                            brand={product.brand}
+                                            category={product.category}
+                                        />
+                                    </Grid>
+                                )
+                            })}
                         </Grid>
-                    )
-                })}
-            </Grid>
-            }
+                        }
+                    </div>
+                )
+            ) :
+                (
+                    <div>
+                        <div className='product-search'>
+                            <form>
+                                <input
+                                    className='product-search-input'
+                                    type='text'
+                                    onChange={handleChange}
+                                    placeholder='Search'
+                                />
+                            </form>
+                        </div>
+                        {error && (
+                            <div>
+                                <p>{error.message}</p>
+                            </div>
+                        )}
+
+                        {products && <Grid className="products" container spacing={3}>
+                            {filteredProducts.map(product => {
+                                return (
+                                    <Grid item xs={12} sm={6} md={4} lg={3}>
+                                        <Products
+                                            key={product.id}
+                                            name={product.product_name}
+                                            price={product.price}
+                                            image={product.image}
+                                            description={product.description}
+                                            brand={product.brand}
+                                            category={product.category}
+                                        />
+                                    </Grid>
+                                )
+                            })}
+                        </Grid>
+                        }
+                    </div>
+                )}
         </div>
     )
 }
