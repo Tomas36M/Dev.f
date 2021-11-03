@@ -4,10 +4,12 @@ import Products from '../component/Product/Products';
 import { Grid } from '@mui/material';
 import Payload from '../utils/payload';
 import CoolHeader from '../component/CoolHeader/CoolHeader';
-
+import { useProductContext } from '../context/ProductContext';
 const Home = () => {
 
     const user = Payload()
+
+    const context = useProductContext()
 
     const [products, setProducts] = useState([]);
     const [search, setSearch] = useState('');
@@ -28,34 +30,20 @@ const Home = () => {
         }
     }, [response]);
 
-    const filteredProducts = products && products.filter(product =>
-        product.product_name.toLowerCase().includes(search.toLowerCase())
-    );
-
     return (
         <div>
             {user ? (
                 (
                     <div>
                         <CoolHeader />
-                        <div className='product-search'>
-                            <form>
-                                <input
-                                    className='product-search-input'
-                                    type='text'
-                                    onChange={handleChange}
-                                    placeholder='Search'
-                                />
-                            </form>
-                        </div>
                         {error && (
                             <div>
                                 <p>{error.message}</p>
                             </div>
                         )}
 
-                        {products && <Grid className="products" container spacing={3}>
-                            {filteredProducts.map(product => {
+                        {context.products && <Grid className="products" container spacing={3}>
+                            {context.filteredProducts.map(product => {
                                 return (
                                     <Grid item xs={12} sm={6} md={4} lg={3}>
                                         <Products
@@ -77,24 +65,14 @@ const Home = () => {
             ) :
                 (
                     <div>
-                        <div className='product-search'>
-                            <form>
-                                <input
-                                    className='product-search-input'
-                                    type='text'
-                                    onChange={handleChange}
-                                    placeholder='Search'
-                                />
-                            </form>
-                        </div>
                         {error && (
                             <div>
                                 <p>{error.message}</p>
                             </div>
                         )}
 
-                        {products && <Grid className="products" container spacing={3}>
-                            {filteredProducts.map(product => {
+                        {context.products && <Grid className="products" container spacing={3}>
+                            {context.filteredProducts.map(product => {
                                 return (
                                     <Grid item xs={12} sm={6} md={4} lg={3}>
                                         <Products

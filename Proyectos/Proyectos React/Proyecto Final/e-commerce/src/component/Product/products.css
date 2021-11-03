@@ -12,3 +12,8 @@
 .price{
     margin-left: 20px;
 }
+
+.modal-image{
+    height: 150px;
+    width: 150px;
+}

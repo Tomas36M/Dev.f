@@ -5,6 +5,7 @@ import Navbar from '../component/Navbar/Navbar'
 import SignUp from '../views/SignUp'
 import LogIn from '../views/LogIn'
 import { Redirect } from 'react-router'
+import { ProductProvider } from '../context/ProductContext'
 
 const Logout = () => {
     window.localStorage.removeItem('token')
@@ -14,15 +15,17 @@ const Logout = () => {
 const Routes = () => {
     return (
         <div>
-            <Router>
-                <Navbar />
-                <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/signup" component={SignUp} />
-                    <Route exact path="/login" component={LogIn} />
-                    <Route exact path="/logout" component={Logout} />
-                </Switch>
-            </Router>
+            <ProductProvider>
+                <Router>
+                    <Navbar />
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route exact path="/signup" component={SignUp} />
+                        <Route exact path="/login" component={LogIn} />
+                        <Route exact path="/logout" component={Logout} />
+                    </Switch>
+                </Router>
+            </ProductProvider>
         </div>
     )
 }

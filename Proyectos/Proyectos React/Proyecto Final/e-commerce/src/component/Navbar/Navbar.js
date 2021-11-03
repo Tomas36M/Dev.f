@@ -14,6 +14,7 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Payload from '../../utils/payload';
+import { useProductContext } from '../../context/ProductContext';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -56,6 +57,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Navbar() {
+
+    const context = useProductContext()
 
     const user = Payload();
 
@@ -123,7 +126,7 @@ export default function Navbar() {
         >
             <MenuItem>
                 <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                    
+
                 </IconButton>
                 <p>LogIn</p>
             </MenuItem>
@@ -133,7 +136,7 @@ export default function Navbar() {
                     aria-label="show 17 new notifications"
                     color="inherit"
                 >
-                    
+
                 </IconButton>
                 <p>SignUp</p>
             </MenuItem>
@@ -154,112 +157,114 @@ export default function Navbar() {
 
     return (
         <div>
-            {user ? (
-                <Box sx={{ flexGrow: 1 }}>
-                <AppBar position="static">
-                    <Toolbar>
-                        <Link to="/">
-                        <Typography
-                            variant="h6"
-                            noWrap
-                            component="div"
-                            sx={{ display: { xs: 'none', sm: 'block' } }}
-                        >
-                            My Store
-                        </Typography>
-                        </Link>
-                        <Search>
-                            <SearchIconWrapper>
-                                <SearchIcon />
-                            </SearchIconWrapper>
-                            <StyledInputBase
-                                placeholder="Search…"
-                                inputProps={{ 'aria-label': 'search' }}
-                            />
-                        </Search>
-                        <Box sx={{ flexGrow: 1 }} />
-                        <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                                <Link to="/profile"><Button variant="contained">Profile</Button></Link>
-                            </IconButton>
-                            <IconButton
-                                size="large"
-                                aria-label=""
-                                color="inherit"
-                            >
-                                <Link to="/logout"><Button variant="contained">LogOut</Button></Link>
-                            </IconButton>
-                            <IconButton
-                                size="large"
-                                edge="end"
-                                aria-label="account of current user"
-                                aria-controls={menuId}
-                                aria-haspopup="true"
-                                onClick={handleProfileMenuOpen}
-                                color="inherit"
-                            >
-                                <AccountCircle />
-                            </IconButton>
-                        </Box>
-                        <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-                            <IconButton
-                                size="large"
-                                aria-label="show more"
-                                aria-controls={mobileMenuId}
-                                aria-haspopup="true"
-                                onClick={handleMobileMenuOpen}
-                                color="inherit"
-                            >
-                                <MoreIcon />
-                            </IconButton>
-                        </Box>
-                    </Toolbar>
-                </AppBar>
-                {renderMobileMenu}
-                {renderMenu}
-            </Box>
-            ) : (
-                <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
-                <Toolbar>
-                    <Link to="/">
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="div"
-                        sx={{ display: { xs: 'none', sm: 'block' } }}
-                    >
-                        My Store
-                    </Typography>
-                    </Link>
-                    <Search>
-                        <SearchIconWrapper>
-                            <SearchIcon />
-                        </SearchIconWrapper>
-                        <StyledInputBase
-                            placeholder="Search…"
-                            inputProps={{ 'aria-label': 'search' }}
-                        />
-                    </Search>
-                    <Box sx={{ flexGrow: 1 }} />
-                    <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                            <Link to="/login"><Button variant="contained">LogIn</Button></Link>
-                        </IconButton>
-                        <IconButton
-                            size="large"
-                            aria-label=""
-                            color="inherit"
-                        >
-                            <Link to="/signup"><Button variant="contained">SignUp</Button></Link>
-                        </IconButton>
+                {user ? (
+                    <Box sx={{ flexGrow: 1 }}>
+                        <AppBar position="static">
+                            <Toolbar>
+                                <Link to="/">
+                                    <Typography
+                                        variant="h6"
+                                        noWrap
+                                        component="div"
+                                        sx={{ display: { xs: 'none', sm: 'block' } }}
+                                    >
+                                        My Store
+                                    </Typography>
+                                </Link>
+                                <Search>
+                                    <SearchIconWrapper>
+                                        <SearchIcon />
+                                    </SearchIconWrapper>
+                                    <StyledInputBase
+                                        placeholder="Search…"
+                                        inputProps={{ 'aria-label': 'search' }}
+                                        onChange={context.handleChange}
+                                    />
+                                </Search>
+                                <Box sx={{ flexGrow: 1 }} />
+                                <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                                    <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+                                        <Link to="/profile"><Button variant="contained">Profile</Button></Link>
+                                    </IconButton>
+                                    <IconButton
+                                        size="large"
+                                        aria-label=""
+                                        color="inherit"
+                                    >
+                                        <Link to="/logout"><Button variant="contained">LogOut</Button></Link>
+                                    </IconButton>
+                                    <IconButton
+                                        size="large"
+                                        edge="end"
+                                        aria-label="account of current user"
+                                        aria-controls={menuId}
+                                        aria-haspopup="true"
+                                        onClick={handleProfileMenuOpen}
+                                        color="inherit"
+                                    >
+                                        <AccountCircle />
+                                    </IconButton>
+                                </Box>
+                                <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+                                    <IconButton
+                                        size="large"
+                                        aria-label="show more"
+                                        aria-controls={mobileMenuId}
+                                        aria-haspopup="true"
+                                        onClick={handleMobileMenuOpen}
+                                        color="inherit"
+                                    >
+                                        <MoreIcon />
+                                    </IconButton>
+                                </Box>
+                            </Toolbar>
+                        </AppBar>
+                        {renderMobileMenu}
+                        {renderMenu}
                     </Box>
-                </Toolbar>
-            </AppBar>
-            {renderMobileMenu}
-            {renderMenu}
-        </Box>
-            )}
+                ) : (
+                    <Box sx={{ flexGrow: 1 }}>
+                        <AppBar position="static">
+                            <Toolbar>
+                                <Link to="/">
+                                    <Typography
+                                        variant="h6"
+                                        noWrap
+                                        component="div"
+                                        sx={{ display: { xs: 'none', sm: 'block' } }}
+                                    >
+                                        My Store
+                                    </Typography>
+                                </Link>
+                                <Search>
+                                    <SearchIconWrapper>
+                                        <SearchIcon />
+                                    </SearchIconWrapper>
+                                    <StyledInputBase
+                                        placeholder="Search…"
+                                        inputProps={{ 'aria-label': 'search' }}
+                                        onChange={context.handleChange}
+                                    />
+                                </Search>
+                                <Box sx={{ flexGrow: 1 }} />
+                                <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                                    <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+                                        <Link to="/login"><Button variant="contained">LogIn</Button></Link>
+                                    </IconButton>
+                                    <IconButton
+                                        size="large"
+                                        aria-label=""
+                                        color="inherit"
+                                    >
+                                        <Link to="/signup"><Button variant="contained">SignUp</Button></Link>
+                                    </IconButton>
+                                </Box>
+                            </Toolbar>
+                        </AppBar>
+                        {renderMobileMenu}
+                        {renderMenu}
+                    </Box>
+                )}
         </div>
     );
 }
