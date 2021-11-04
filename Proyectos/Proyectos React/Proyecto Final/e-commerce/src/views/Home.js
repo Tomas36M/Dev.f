@@ -5,6 +5,8 @@ import { Grid } from '@mui/material';
 import Payload from '../utils/payload';
 import CoolHeader from '../component/CoolHeader/CoolHeader';
 import { useProductContext } from '../context/ProductContext';
+import { CurrentUserProvider } from '../context/CurrentUserContext'
+
 const Home = () => {
 
     const user = Payload()
@@ -19,10 +21,6 @@ const Home = () => {
         url: 'item'
     });
 
-    const handleChange = e => {
-        setSearch(e.target.value)
-    }
-
     useEffect(() => {
         if (response !== null) {
             setProducts(response);
@@ -35,7 +33,9 @@ const Home = () => {
             {user ? (
                 (
                     <div>
-                        <CoolHeader />
+                        <CurrentUserProvider>
+                            <CoolHeader />
+                        </CurrentUserProvider>
                         {error && (
                             <div>
                                 <p>{error.message}</p>

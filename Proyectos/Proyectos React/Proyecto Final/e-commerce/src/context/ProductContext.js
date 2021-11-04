@@ -21,6 +21,7 @@ function ProductProvider(props) {
         method: 'GET',
         url: 'item'
     });
+    
 
     const handleChange = e => {
         setSearch(e.target.value)

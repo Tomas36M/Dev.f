@@ -15,6 +15,8 @@ import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Payload from '../../utils/payload';
 import { useProductContext } from '../../context/ProductContext';
+import Logo from '../../assets/Logo.png'
+import './NavBar.css'
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -161,15 +163,8 @@ export default function Navbar() {
                     <Box sx={{ flexGrow: 1 }}>
                         <AppBar position="static">
                             <Toolbar>
-                                <Link to="/">
-                                    <Typography
-                                        variant="h6"
-                                        noWrap
-                                        component="div"
-                                        sx={{ display: { xs: 'none', sm: 'block' } }}
-                                    >
-                                        My Store
-                                    </Typography>
+                            <Link to="/" className="logo">
+                                    <img className="logo" src={Logo} alt="Logo" />
                                 </Link>
                                 <Search>
                                     <SearchIconWrapper>
@@ -226,15 +221,8 @@ export default function Navbar() {
                     <Box sx={{ flexGrow: 1 }}>
                         <AppBar position="static">
                             <Toolbar>
-                                <Link to="/">
-                                    <Typography
-                                        variant="h6"
-                                        noWrap
-                                        component="div"
-                                        sx={{ display: { xs: 'none', sm: 'block' } }}
-                                    >
-                                        My Store
-                                    </Typography>
+                                <Link to="/" className="logo">
+                                <img className="logo" src={Logo} alt="Logo" />
                                 </Link>
                                 <Search>
                                     <SearchIconWrapper>

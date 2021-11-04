@@ -4,6 +4,7 @@ import Home from '../views/Home'
 import Navbar from '../component/Navbar/Navbar'
 import SignUp from '../views/SignUp'
 import LogIn from '../views/LogIn'
+import SellProduct from '../views/SellProduct'
 import { Redirect } from 'react-router'
 import { ProductProvider } from '../context/ProductContext'
 
@@ -23,6 +24,7 @@ const Routes = () => {
                         <Route exact path="/signup" component={SignUp} />
                         <Route exact path="/login" component={LogIn} />
                         <Route exact path="/logout" component={Logout} />
+                        <Route exact path="/sell" component={SellProduct} />
                     </Switch>
                 </Router>
             </ProductProvider>

@@ -3,8 +3,8 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+// import FormControlLabel from '@mui/material/FormControlLabel';
+// import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -12,10 +12,9 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import axios from 'axios'
-import useForm from '../hooks/useForm'
-import { useHistory } from 'react-router'
-    
+import useForm from '../hooks/useForm';
+import { useHistory } from 'react-router';
+import axios from 'axios';
 
 function Copyright(props) {
     return (
@@ -32,20 +31,28 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function LogIn() {
-    
+export default function SellProduct() {
+
+    const token = window.localStorage.getItem('token');
+
+    const config = {
+        headers: {
+            Authorization: `JWT ${token}`
+        }
+    }
+
     let history = useHistory();
     const sendData = (data) => {
-        axios.post("https://ecomerce-master.herokuapp.com/api/v1/login", data)
+        axios.post("https://ecomerce-master.herokuapp.com/api/v1/item", data, config)
             .then((response) => {
                 console.log(response.data);
-                window.localStorage.setItem("token", response.data.token)
                 history.push('/');
             })
             .catch((error) => {
                 alert(error.response.data.message)
             })
     }
+
 
     const { input, handleInputChange, handleSubmit } = useForm(sendData, {})
 
@@ -81,37 +88,86 @@ export default function LogIn() {
                             <LockOutlinedIcon />
                         </Avatar>
                         <Typography component="h1" variant="h5">
-                            Sign in
+                            What are you selling?
                         </Typography>
                         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
                             <TextField
                                 margin="normal"
                                 required
                                 fullWidth
-                                value={input.email}
-                                label="Email"
-                                type="email"
-                                id="email"
+                                id="product_name"
+                                label="Product Name"
+                                name="product_name"
+                                autoComplete="product_name"
+                                value={input.product_name}
                                 onChange={handleInputChange}
-                                name="email"
-                                autoComplete="email"
                                 autoFocus
                             />
                             <TextField
                                 margin="normal"
                                 required
                                 fullWidth
-                                label="Password"
-                                name="password"
-                                value={input.password}
-                                type="password"
-                                id="password"
+                                name="description"
+                                label="Description"
+                                type="text"
+                                id="description"
+                                value={input.descrption}
                                 onChange={handleInputChange}
-                                autoComplete="current-password"
                             />
-                            <FormControlLabel
-                                control={<Checkbox value="remember" color="primary" />}
-                                label="Remember me"
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="price"
+                                label="Price"
+                                type="number"
+                                id="price"
+                                value={input.price}
+                                onChange={handleInputChange}
+                            />
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="category"
+                                label="Category"
+                                type="text"
+                                id="category"
+                                value={input.category}
+                                onChange={handleInputChange}
+                            />
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="brand"
+                                label="Brand"
+                                type="text"
+                                id="brand"
+                                value={input.brand}
+                                onChange={handleInputChange}
+                            />
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="image"
+                                label="Image URL"
+                                type="text"
+                                id="image"
+                                value={input.image}
+                                onChange={handleInputChange}
+                            />
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="sku"
+                                label="sku"
+                                type="text"
+                                id="sku"
+                                value={input.sku}
+                                onChange={handleInputChange}
                             />
                             <Button
                                 type="submit"
@@ -119,20 +175,8 @@ export default function LogIn() {
                                 variant="contained"
                                 sx={{ mt: 3, mb: 2 }}
                             >
-                                Sign In
+                                Publish
                             </Button>
-                            <Grid container>
-                                <Grid item xs>
-                                    <Link href="#" variant="body2">
-                                        Forgot password?
-                                    </Link>
-                                </Grid>
-                                <Grid item>
-                                    <Link to="/signup" variant="body2">
-                                        {"Don't have an account? Sign Up"}
-                                    </Link>
-                                </Grid>
-                            </Grid>
                             <Copyright sx={{ mt: 5 }} />
                         </Box>
                     </Box>
