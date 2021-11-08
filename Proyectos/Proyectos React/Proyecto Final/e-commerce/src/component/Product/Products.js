@@ -8,13 +8,15 @@ import CardActions from '@mui/material/CardActions';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 // import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
+import { blue } from '@mui/material/colors';
 import InfoIcon from '@mui/icons-material/Info';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import accounting from 'accounting';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
+import { UseProductContext } from '../../context/ProductContext';
+import CircularProgress from '@mui/material/CircularProgress';
 import './products.css'
 
 const style = {
@@ -75,7 +77,7 @@ const ExpandMore = styled((props) => {
 
 const getImgUrl = (image) => {
     if (image === undefined) {
-        return 'https://bitsofco.de/content/images/2018/12/broken-1.png';
+        return 'https://besthqwallpapers.com/Uploads/16-5-2019/92346/thumb2-404-wallpapers-not-found-blue-background-3d-creative-art-404-error-3d-letters.jpg';
     } else {
         return image;
     }
@@ -87,8 +89,11 @@ export default function Products({
     price,
     category,
     brand,
-    image
+    image,
+    id
 }) {
+
+    const context = UseProductContext();
 
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => {
@@ -99,56 +104,70 @@ export default function Products({
     };
 
     return (
-        <Card className="cards" sx={{ maxWidth: 345 }}>
-            <CardHeader
-                avatar={
-                    <Avatar sx={{ bgcolor: red[500] }} aria-label="product">
-                        T
-                    </Avatar>
-                }
-                action={
-                    <IconButton aria-label="settings">
-                        <ShoppingCartIcon />
-                    </IconButton>
-                }
-                title={name}
-                subheader={category}
-            />
-            <CardMedia
-                component="img"
-                height="194"
-                image={getImgUrl(image)}
-                onError='https://bitsofco.de/content/images/2018/12/broken-1.png'
-                alt="Product"
-            />
-            {/* <CardContent className="text-content">
+        <div>
+            {context.loading ? (
+                <Box sx={{ display: 'flex' }}>
+                    <CircularProgress color="success" />
+                </Box>
+            ) : (
+                <div>
+                    {context.error && (
+                        <div>
+                            <p>{context.error.message}</p>
+                        </div>
+                    )}
+                    <Card className="cards" sx={{ maxWidth: 345 }}>
+                        <CardHeader
+                            avatar={
+                                <Avatar  sx={{ bgcolor: blue[500] }} aria-label="product">
+                                    
+                                </Avatar>
+                            }
+                            action={
+                                <IconButton aria-label="settings">
+                                    <ShoppingCartIcon />
+                                </IconButton>
+                            }
+                            title={name}
+                            subheader={category}
+                        />
+                        <CardMedia
+                            component="img"
+                            height="194"
+                            image={getImgUrl(image)}
+                            onError='https://bitsofco.de/content/images/2018/12/broken-1.png'
+                            alt="Product"
+                        />
+                        {/* <CardContent className="text-content">
                 <Typography variant="body2" color="text.secondary">
                     {'Brand: ' + brand}
                 </Typography>
             </CardContent> */}
-            <CardActions disableSpacing>
-                <h3 className="price">{accounting.formatMoney(price)}</h3>
-                <ExpandMore>
-                    <InfoIcon onClick={handleOpen} />
-                    <Modal
-                        open={open}
-                        onClose={handleClose}
-                        aria-labelledby="parent-modal-title"
-                        aria-describedby="parent-modal-description"
-                    >
-                        <Box sx={{ ...style, width: 400 }}>
-                            <h2 id="parent-modal-title">{name}</h2>
-                            <img className="modal-image" src={image} />
-                            <p id="parent-modal-description">
-                                {description}
-                            </p>
-                            <p>{brand}</p>
-                            <ChildModal />
-                        </Box>
-                    </Modal>
-                </ExpandMore>
-            </CardActions>
-        </Card>
-
+                        <CardActions disableSpacing>
+                            <p className="price">{accounting.formatMoney(price)}</p>
+                            <ExpandMore>
+                                <InfoIcon onClick={handleOpen} />
+                                <Modal
+                                    open={open}
+                                    onClose={handleClose}
+                                    aria-labelledby="parent-modal-title"
+                                    aria-describedby="parent-modal-description"
+                                >
+                                    <Box sx={{ ...style, width: 400 }}>
+                                        <h2 id="parent-modal-title">{name}</h2>
+                                        <img className="modal-image" src={image} alt="product"/>
+                                        <p id="parent-modal-description">
+                                            {description}
+                                        </p>
+                                        <p>{brand}</p>
+                                        <ChildModal />
+                                    </Box>
+                                </Modal>
+                            </ExpandMore>
+                        </CardActions>
+                    </Card>
+                </div>
+            )}
+        </div>
     );
 }

@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import UseAxios from '../hooks/UseAxios';
+import cartReducer from './Reducer'
 
 // CONTEXT tiene que ver con el manejo de estados globales en React
 // Es decir, poder compartir LA MISMA información
@@ -16,6 +17,8 @@ function ProductProvider(props) {
     const [products, setProducts] = useState([]);
     const [search, setSearch] = useState('');
 
+    const hola = [{name:"pollo",last:"broaster"}];
+
 
     const { response, loading, error } = UseAxios({
         method: 'GET',
@@ -30,6 +33,7 @@ function ProductProvider(props) {
     useEffect(() => {
         if (response !== null) {
             setProducts(response);
+            console.log(response)
         }
     }, [response]);
 
@@ -40,7 +44,10 @@ function ProductProvider(props) {
     const value = {
         products,
         handleChange,
-        filteredProducts
+        filteredProducts,
+        loading, 
+        error,
+        hola
     }
 
     return(
@@ -50,7 +57,7 @@ function ProductProvider(props) {
 
 // #3 Consumidor del contexto (Consumer)
 // Brindar el acceso a la data a los componentes.
-const useProductContext = () => {
+const UseProductContext = () => {
     const context = React.useContext(ProductContext);
     return context;
 }
@@ -59,7 +66,7 @@ const useProductContext = () => {
 // para que estas puedan ser invocadas por nuestros componentes
 export {
     ProductProvider,
-    useProductContext
+    UseProductContext
 }
 
 /* USO DE CONTEXT

@@ -1,0 +1,13 @@
+export default function Payload () {
+    
+    const token = window.localStorage.getItem('token');
+    
+    if(token){
+        const [payload] = token.split('.');
+        const base64 = payload.replace('-','+').replace('_','/');
+        const payloadObject = JSON.parse(window.atob(base64));
+        return payloadObject
+    } else {
+        return null;
+    }
+}
