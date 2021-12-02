@@ -1,8 +1,11 @@
 import React from 'react'
 import axios from 'axios'
-import { useHistory } from 'react-router'
+// import { useHistory } from 'react-router'
 import { useUserContext } from '../../context/CurrentUserContext';
+import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress';
 import Payload from '../../utils/payload';
+// import useForm from '../../hooks/useForm';
 
 const PremiumBtn = () => {
 
@@ -12,26 +15,34 @@ const PremiumBtn = () => {
 
     const token = window.localStorage.getItem('token');
 
+
     const url = `https://ecomerce-master.herokuapp.com/api/v1/user/${currentUser.id}`;
 
-    let history = useHistory();
+    // let history = useHistory();
 
-    const sendData = () => {
-        // if (context.user.role === 'CUSTOMER') {
-            axios(url, {
-                method: "PATCH",
-                headers: { Authorization: `JWT ${token}` },
-                body: JSON.stringify({ role: "ADMIN" })
-            })
+    const sendData = (data) => {
+
+        const headers = {"Authorization": `JWT ${token}`}
+
+        if (data === 'CUSTOMER') {
+            axios.patch(url, { role: "ADMIN" }, {headers})
                 .then(response => {
-                    console.log(response.status);
-
+                    if (response.status === 200) {
+                        //Cuando se crea el usuario
+                        console.log(response.status)
+                        // history.push('/')
+                        alert('Genial, ya eres ADMIN');
+                        return response;
+                    }
+                }).catch((error) => {
+                    alert(error.response.data.message)
                 })
-                .then(data => console.log(data));
-        // } else {
-        //     alert("Ya eres ususario Premium")
-        // }
+        } else {
+            alert("Ya eres ususario Premium")
+        }
     }
+
+    // const { input, handleInputChange, handleSubmit } = useForm(sendData, {})
 
     // const { response, loading, error } = UseAxios({
     //     method: 'PATCH',
@@ -49,7 +60,25 @@ const PremiumBtn = () => {
 
     return (
         <div>
-            <button onClick={sendData()}>Go Premium</button>
+            {context.loading ? (
+                <Box className="loader" sx={{ display: 'flex' }}>
+                    <CircularProgress color="secondary" />
+                </Box>
+            ) : (
+                <div>
+                    {context.error && (
+                        <div>
+                            <p>{context.error.message}</p>
+                        </div>
+                    )}
+
+                    {context.user && (
+                        <div>
+                            <button onSubmit={sendData(context.user.role)}>Go Premium</button>
+                        </div>
+                    )}
+                </div>
+            )}
         </div>
     )
 }

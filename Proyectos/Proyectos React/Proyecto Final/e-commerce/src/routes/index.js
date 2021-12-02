@@ -7,22 +7,24 @@ import LogIn from '../views/LogIn'
 import SellProduct from '../views/SellProduct'
 import Cart from '../views/Cart'
 import Premium from '../views/Premium'
+import Profile from '../views/Profile'
 import { Redirect } from 'react-router'
 import { ProductProvider } from '../context/ProductContext'
-import { CarProvider } from '../context/CarContext'
+import { CurrentUserProvider } from '../context/CurrentUserContext'
 
 const Logout = () => {
     window.localStorage.removeItem('token')
     return <Redirect to="/" />
 }
 
+
+
 const Routes = () => {
     return (
         <div>
             <ProductProvider>
                 <Router>
-                    <Navbar />
-                    <CarProvider>
+                    <Navbar/>
                     <Switch>
                         <Route exact path="/" component={Home} />
                         <Route exact path="/signup" component={SignUp} />
@@ -30,9 +32,13 @@ const Routes = () => {
                         <Route exact path="/logout" component={Logout} />
                         <Route exact path="/sell" component={SellProduct} />
                         <Route exact path="/cart" component={Cart} />
-                        <Route exact path="/premium" component={Premium} />                                             
                     </Switch>
-                    </CarProvider>
+                    <CurrentUserProvider>
+                        <Switch>
+                            <Route exact path="/profile" component={Profile} />
+                            <Route exact path="/premium" component={Premium} />
+                        </Switch>
+                    </CurrentUserProvider>
                 </Router>
             </ProductProvider>
         </div>

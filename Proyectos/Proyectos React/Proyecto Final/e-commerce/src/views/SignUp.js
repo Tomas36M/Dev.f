@@ -11,6 +11,7 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import Autocomplete from '@mui/material/Autocomplete';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios'
 import useForm from '../hooks/useForm';
@@ -39,19 +40,30 @@ export default function SignUp() {
             delete data.password_confirm
             axios.post("https://ecomerce-master.herokuapp.com/api/v1/signup", data)
                 .then((response) => {
-                    if (response.status === 201) {
+                    if (response.status === 200) {
                         //Cuando se crea el usuario
                         console.log(response.status)
-                        history.push('/login')
+                        history.push('/')
+                        alert('El usuario se ha creado correctamente');
                     }
                 }).catch((error) => {
-                    alert(error.response.data)
+                    alert(error.response.data.message)
                 })
         } else {
             alert("Password no coinciden")
         }
-        console.log(data)
     }
+
+    // const roleOptions = [
+    //         {label: 'CUSTOMER', role: 'CUSTOMER'},
+    //         {label: 'ADMIN', role: 'ADMIN'}
+    //     ];
+
+        // const genderOptions = [
+        //     {label: 'Men', gender: 'M'},
+        //     {label: 'Female', gender: 'F'},
+        //     {label: 'Other', gender: 'O'}
+        // ];
 
     const { input, handleInputChange, handleSubmit } = useForm(sendData, {})
 
@@ -138,6 +150,47 @@ export default function SignUp() {
                                     autoComplete="new-password"
                                 />
                             </Grid>
+                            <Grid item xs={12} sm={6}>
+                            <TextField
+                                    required
+                                    fullWidth
+                                    label="Role"
+                                    value={input.role}
+                                    name="role"
+                                    onChange={handleInputChange}
+                                    type="text"
+                                    id="role"
+                                    autoComplete="new-role"
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                            <TextField
+                                    required
+                                    fullWidth
+                                    label="Gender"
+                                    value={input.gender}
+                                    name="gender"
+                                    onChange={handleInputChange}
+                                    type="text"
+                                    id="gender"
+                                    autoComplete="new-gender"
+                                />
+                            </Grid>
+                            {/* <Grid item xs={12} sm={6}>
+                                <Autocomplete
+                                    disablePortal
+                                    id="combo-box-demo"
+                                    options={genderOptions}
+                                    // value={input.gender}
+                                    // name="gender"
+                                    onChange={handleInputChange}
+                                    renderInput={(params) => <TextField {...params} 
+                                    label="Gender" 
+                                    value={input.gender}
+                                    name="gender"
+                                    onChange={handleInputChange} />}
+                                />
+                            </Grid> */}
                             <Grid item xs={12}>
                                 <FormControlLabel
                                     control={<Checkbox value="allowExtraEmails" color="primary" />}

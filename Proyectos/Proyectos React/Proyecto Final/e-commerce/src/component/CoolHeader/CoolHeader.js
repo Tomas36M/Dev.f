@@ -4,6 +4,8 @@ import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 // import { Link } from 'react-router-dom'
 import { useUserContext } from '../../context/CurrentUserContext'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 const CoolHeader = () => {
 
@@ -23,7 +25,7 @@ const CoolHeader = () => {
                             <p>{context.error.message}</p>
                         </div>
                     )}
-                    <div className="">{console.log(context.user.role === 'CUSTOMER')} {context.user &&
+                    <div> {context.user &&
                         <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
                             <div className="carousel-indicators">
                                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>

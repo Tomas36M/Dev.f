@@ -116,11 +116,11 @@ export default function Products({
                             <p>{context.error.message}</p>
                         </div>
                     )}
-                    <Card className="cards" sx={{ maxWidth: 345 }}>
+                    <Card key={id} className="cards" sx={{ maxWidth: 345 }}>
                         <CardHeader
                             avatar={
-                                <Avatar  sx={{ bgcolor: blue[500] }} aria-label="product">
-                                    
+                                <Avatar sx={{ bgcolor: blue[500] }} aria-label="product">
+
                                 </Avatar>
                             }
                             action={
@@ -154,13 +154,26 @@ export default function Products({
                                     aria-describedby="parent-modal-description"
                                 >
                                     <Box sx={{ ...style, width: 400 }}>
-                                        <h2 id="parent-modal-title">{name}</h2>
-                                        <img className="modal-image" src={image} alt="product"/>
-                                        <p id="parent-modal-description">
-                                            {description}
-                                        </p>
-                                        <p>{brand}</p>
-                                        <ChildModal />
+                                        <div className="card-modal">
+                                            <div className="name-container">
+                                                <h4>{name}</h4>
+                                            </div>
+                                            <div className="img-container">
+                                                <img className="modal-image" src={image} alt="product" />
+                                            </div>
+                                            <div className="description-container">
+                                                <p>{description}</p>
+                                            </div>
+                                            <div className="brand-container">
+                                                <p>Brand: {brand}</p>
+                                            </div>
+                                            <div className="brand-container">
+                                                <p>Category: {category}</p>
+                                            </div>
+                                            <div className="brand-container">
+                                                <p>Price: {accounting.formatMoney(price)}</p>
+                                            </div>
+                                        </div>
                                     </Box>
                                 </Modal>
                             </ExpandMore>

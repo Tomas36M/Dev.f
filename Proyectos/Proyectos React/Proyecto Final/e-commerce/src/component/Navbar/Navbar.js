@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import NavLogIn from './NavLogIn'
 import NavLogOut from './NavLogOut'
 import Payload from '../../utils/payload'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './NavBar.css'
 
 const Navbar = () => {

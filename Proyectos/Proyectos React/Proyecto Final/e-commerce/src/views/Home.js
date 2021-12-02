@@ -3,6 +3,7 @@ import Payload from '../utils/payload';
 import AllProducts from '../component/Product/AllProducts';
 import CoolHeader from '../component/CoolHeader/CoolHeader';
 import { CurrentUserProvider } from '../context/CurrentUserContext';
+import Navbar from '../component/Navbar/Navbar';
 
 const Home = () => {
 
@@ -10,6 +11,7 @@ const Home = () => {
 
     return (
         <div>
+            <Navbar />
             {user ? ((
                 <div>
                     <CurrentUserProvider>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import UseAxios from '../hooks/UseAxios';
-import cartReducer from './Reducer'
+import Reducer from './Reducer'
 
 // CONTEXT tiene que ver con el manejo de estados globales en React
 // Es decir, poder compartir LA MISMA información
@@ -16,9 +16,10 @@ const ProductContext = React.createContext();
 function ProductProvider(props) {
     const [products, setProducts] = useState([]);
     const [search, setSearch] = useState('');
-
-    const hola = [{name:"pollo",last:"broaster"}];
-
+    const [state, dispatch] = useReducer(Reducer, {
+        productos: products,
+        cart: [],
+    });
 
     const { response, loading, error } = UseAxios({
         method: 'GET',
@@ -33,6 +34,7 @@ function ProductProvider(props) {
     useEffect(() => {
         if (response !== null) {
             setProducts(response);
+            // dispatch(response);
             console.log(response)
         }
     }, [response]);
@@ -47,7 +49,8 @@ function ProductProvider(props) {
         filteredProducts,
         loading, 
         error,
-        hola
+        state,
+        dispatch
     }
 
     return(

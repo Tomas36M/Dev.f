@@ -1,16 +1,16 @@
 import React from 'react'
-import { UseCarContext } from '../context/CarContext';
+import { UseProductContext } from '../context/ProductContext';
 
 const Cart = () => {
 
 
-    const context = UseCarContext();
+    const context = UseProductContext();
     console.log(context.state)
 
 
     return (
         <div>
-            <h1>Hola Mundo</h1>
+            <h1>Cart</h1>
         </div>
     )
 }

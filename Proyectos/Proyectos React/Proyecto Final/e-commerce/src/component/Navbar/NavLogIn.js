@@ -1,8 +1,11 @@
 import React from 'react'
 import { UseProductContext } from '../../context/ProductContext'
 import { Link } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 const NavLogIn = () => {
+
 
     const context = UseProductContext();
 

@@ -8,3 +8,11 @@
 .App-link {
   color: #61dafb;
 }
+
+.serach-location{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  padding-bottom: 10px;
+}

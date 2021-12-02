@@ -23,10 +23,10 @@ const AllProducts = () => {
                             <p>{context.error.message}</p>
                         </div>
                     )}
-                        {context.products && <Grid className="products" container spacing={3}>
+                        {context.products && <Grid key={context.products.id}className="products" container spacing={3}>
                             {context.filteredProducts.map(product => {
                                 return (
-                                    <Grid item xs={12} sm={6} md={4} lg={3}>
+                                    <Grid key={product.id} item xs={12} sm={6} md={4} lg={3}>
                                         <Products
                                             key={product.id}
                                             name={product.product_name}
