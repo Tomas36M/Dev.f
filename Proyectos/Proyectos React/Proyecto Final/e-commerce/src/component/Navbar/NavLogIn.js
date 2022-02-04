@@ -21,7 +21,7 @@ const NavLogIn = () => {
                         <form className="d-flex me-auto w-50 search-bar">
                             <input className="form-control me-2" type="search" placeholder="Search..." aria-label="Search" onChange={context.handleChange} />
                         </form>
-                        <ul className="navbar-nav ms-auto mb-2 mb-lg-0 ms-auto">
+                        <ul className="navbar-nav ms-auto mb-2 mb-lg-0 me-auto">
                             <li className="nav-item me-auto">
                                 <Link to="/profile"><button type="button" className="btn btn-primary">Profile</button></Link>
                             </li>

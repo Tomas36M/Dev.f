@@ -1,0 +1,3 @@
+[submodule "G9_API_MYSQL"]
+	path = G9_API_MYSQL
+	url = https://github.com/dashfuentes/G9_API_MYSQL.git
