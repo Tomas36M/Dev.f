@@ -13,6 +13,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import useForm from '../hooks/useForm';
 import { useHistory } from 'react-router';
 import axios from 'axios';
+import Navbar from '../component/Navbar/Navbar'
+
 
 function Copyright(props) {
     return (
@@ -57,6 +59,7 @@ export default function SellProduct() {
 
     return (
         <ThemeProvider theme={theme}>
+            <Navbar />
             <Grid container component="main" sx={{ height: '100vh' }}>
                 <CssBaseline />
                 <Grid

@@ -2,6 +2,7 @@ import React from 'react'
 import { useUserContext } from '../context/CurrentUserContext';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
+import Navbar from '../component/Navbar/Navbar'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './profile.css'
@@ -20,6 +21,7 @@ const Profile = () => {
 
     return (
         <div>
+            <Navbar />
             {context.loading ? (
                 <Box classNameName="loader" sx={{ display: 'flex' }}>
                     <CircularProgress color="secondary" />
@@ -43,10 +45,10 @@ const Profile = () => {
                                 <div id="u-name">{context.user.first_name.charAt(0).toUpperCase() + context.user.first_name.slice(1)} {context.user.last_name.charAt(0).toUpperCase() + context.user.last_name.slice(1)}</div>
                                 <div className="tb" id="m-btns">
                                     <div className="td">
-                                        <div className="m-btn"><i className="material-icons">format_list_bulleted</i><span>Activity log</span></div>
+                                        <div className="m-btn"><span>Activity log</span></div>
                                     </div>
                                     <div className="td">
-                                        <div className="m-btn"><i className="material-icons">lock</i><span>Privacy</span></div>
+                                        <div className="m-btn"><span>Privacy</span></div>
                                     </div>
                                 </div>
                                 <div id="edit-profile"><i className="material-icons">camera_alt</i></div>

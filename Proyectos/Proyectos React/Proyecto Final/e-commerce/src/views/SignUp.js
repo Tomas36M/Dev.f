@@ -16,6 +16,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios'
 import useForm from '../hooks/useForm';
 import { useHistory } from 'react-router'
+import Navbar from '../component/Navbar/Navbar'
 
 function Copyright(props) {
     return (
@@ -69,6 +70,7 @@ export default function SignUp() {
 
     return (
         <ThemeProvider theme={theme}>
+            <Navbar />
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <Box

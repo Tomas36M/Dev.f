@@ -4,28 +4,28 @@
 //* 2.- Siempre debe ser funciones (TRABAJAMOS REACT FUNCIONAL, EN SU VERSIÓN 16 -> HOOKS)!
 //* 3.- Tienes que utilizar hooks en react, 
 
-import {useState} from 'react'
+import { useState } from 'react'
 
 
-function useForm(callback , defaults) {
-    
+function useForm(callback, defaults) {
+
     const [input, setInput] = useState(defaults)//vamos a guardar los valores de mi formulario
-    
+
 
     // useEffect (() => { //ESCUCHAR SI HAY CAMBIOS EN LOS PROPS O EN EL ESTADO
     //     setInput({...defaults})
     // }, [defaults])
 
-    const handleSubmit = (event) =>{
+    const handleSubmit = (event) => {
         //handleSubmit va a ser ocupada en el submit de mi formulario
-        event.preventDefault();  //Evita el refresh al enviar el formulario, en react debemos evitar el refresh
-        callback(input) 
+            event.preventDefault();  //Evita el refresh al enviar el formulario, en react debemos evitar el refresh
+            callback(input); 
     }
 
     const handleInputChange = (event) => {
-            const {name, value} = event.target
-            console.log(name,value);
-            setInput({...input, [name]:value})
+        const { name, value } = event.target
+        console.log(name, value);
+        setInput({ ...input, [name]: value })
     }
 
 
@@ -33,7 +33,7 @@ function useForm(callback , defaults) {
         input,
         handleSubmit,
         handleInputChange
-    } 
+    }
 }
 
 export default useForm

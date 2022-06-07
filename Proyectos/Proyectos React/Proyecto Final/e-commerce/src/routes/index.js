@@ -24,7 +24,6 @@ const Routes = () => {
         <div>
             <ProductProvider>
                 <Router>
-                    <Navbar/>
                     <Switch>
                         <Route exact path="/" component={Home} />
                         <Route exact path="/signup" component={SignUp} />

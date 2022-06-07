@@ -13,11 +13,14 @@ const CurrentUserProvider = (props) => {
 
     const token = window.localStorage.getItem('token');
 
+
+
     const { response, loading, error } = UseAxios({
         method: 'GET',
         url: currentUser ? `user/${currentUser.id}` : null,
         headers: {Authorization: `JWT ${token}`}
     });
+    
 
     useEffect(() => {
         if (response !== null) {

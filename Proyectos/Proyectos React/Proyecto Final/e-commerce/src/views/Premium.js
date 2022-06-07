@@ -1,11 +1,11 @@
 import React from 'react'
-import PremiumBtn from '../component/PremiumBtn/PremiumBtn'
+import Navbar from '../component/Navbar/Navbar'
 
 const Premium = () => {
     return (
         <div>
+            <Navbar />
             <h1>Premium</h1>
-            <PremiumBtn />
         </div>
     )
 }
